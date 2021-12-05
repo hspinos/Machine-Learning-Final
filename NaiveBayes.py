@@ -17,13 +17,17 @@ varSmooths = np.linspace(0, .001, 101)
 
 #for r in range(1, 11):
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.33, random_state=1)
-scores = []
+train_scores = []
+test_scores = []
 for v in varSmooths:
     GNB = GaussianNB(var_smoothing=v)
     GNB.fit(X_train, y_train)
-    scores.append(GNB.score(X_test, y_test))
+    train_scores.append(GNB.score(X_train, y_train))
+    test_scores.append(GNB.score(X_test, y_test))
     
-plt.plot(varSmooths, scores)
+plt.plot(varSmooths, train_scores, label="GNB Train")
+plt.plot(varSmooths, test_scores, label="GNB Test")
+plt.legend()
     
 
 #Model Using 8-Fold Cross Validation
