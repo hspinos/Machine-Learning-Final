@@ -30,7 +30,7 @@ plt.show()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.33, random_state=1)
 train_scores = []
 test_scores = []
-c = np.linspace(1, 20, 100)
+c = np.linspace(1, 50, 100)
 for i in c:
     svm = SVC(kernel='rbf', C=i)
     svm.fit(X_train, y_train)
