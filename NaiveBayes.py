@@ -13,7 +13,6 @@ y = data[: , 0]
 
 
 #Model Using 8-Fold Cross Validation
-
 varSmooths = np.linspace(0, .001, 101)
 cv_scores = []
 for v in varSmooths:
@@ -25,11 +24,9 @@ plt.plot(varSmooths, cv_scores, label="Scores")
 plt.title("GNB 8-Fold CV")
 plt.legend()
 
+
 #Model Using Train Test Split
-
 varSmooths = np.linspace(0, .001, 101)
-
-#for r in range(1, 11):
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.33, random_state=1)
 train_scores = []
 test_scores = []
