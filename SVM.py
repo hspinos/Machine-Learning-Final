@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
-data = np.loadtxt('leaf.csv', delimiter=',')
+data = np.loadtxt('leaf2.csv', delimiter=',')
 X = data[:, 2:15]
 y = data[:, 0]
 
@@ -14,7 +14,7 @@ X = scaler.fit_transform(X)
 
 #SVM cross val score
 ml_cv = []
-c = np.linspace(1, 20, 100)
+c = np.linspace(3.5, 8, 100)
 for i in c:
     svc = SVC(kernel='rbf', C=i)
     svc.fit(X, y)
