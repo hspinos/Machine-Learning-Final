@@ -25,8 +25,9 @@ for v in varSmooths:
     train_scores.append(GNB.score(X_train, y_train))
     test_scores.append(GNB.score(X_test, y_test))
     
-plt.plot(varSmooths, train_scores, label="GNB Train")
-plt.plot(varSmooths, test_scores, label="GNB Test")
+plt.plot(varSmooths, train_scores, label="Train")
+plt.plot(varSmooths, test_scores, label="Test")
+plt.title("GNB Train Test Split")
 plt.legend()
     
 
@@ -40,6 +41,7 @@ for v in varSmooths:
     cv_scores.append(cv.mean())
     
 plt.figure()
-plt.plot(varSmooths, cv_scores, label="GNB 8CV")
+plt.plot(varSmooths, cv_scores, label="Scores")
+plt.title("GNB 8-Fold CV")
 plt.legend()
 

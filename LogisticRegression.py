@@ -17,6 +17,7 @@ for i in alphas:
     cv = cross_val_score(lr, X, y, cv=8)
     lr_cv.append(cv.mean())
 plt.plot(alphas, lr_cv, label="Logistic Regression")
+plt.title("Logistic Regression 8-Fold Cross Validation")
 plt.legend()
 plt.show()
 
@@ -35,6 +36,7 @@ for i in range(0, 100):
     state.append(i)
 plt.plot(state, test_scores, label='test')
 plt.plot(state, train_scores, label='train')
+plt.title("Logistic Regression Train Test Split")
 plt.legend()
 plt.show()
 

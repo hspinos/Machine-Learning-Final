@@ -21,6 +21,7 @@ for i in c:
     cv = cross_val_score(svc, X, y, cv=8)
     ml_cv.append(cv.mean())
 plt.plot(c, ml_cv, label='rbf')
+plt.title("Support Vector Machine 8-Fold CV")
 plt.legend()
 plt.show()
 
@@ -37,5 +38,6 @@ for i in c:
     test_scores.append(svm.score(X_test, y_test))
 plt.plot(c, test_scores, label = 'test')
 plt.plot(c, train_scores, label = 'train')
+plt.title("Support Vector Machine TTS")
 plt.legend()
 plt.show()
