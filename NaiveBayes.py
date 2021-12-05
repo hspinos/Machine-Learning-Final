@@ -7,7 +7,7 @@ from sklearn.naive_bayes import GaussianNB
 import matplotlib.pyplot as plt
 
 #Load data
-data = np.loadtxt('leaf.csv', delimiter=',')
+data = np.loadtxt('leaf2.csv', delimiter=',')
 X = data[: , 2:15]
 y = data[: , 0]
 
@@ -36,8 +36,10 @@ varSmooths = np.linspace(0, .001, 101)
 cv_scores = []
 for v in varSmooths:
     GNB2 = GaussianNB(var_smoothing=v)
-    cv_scores.append(cross_val_score(GNB2, X, y, cv=8).mean())
+    cv = cross_val_score(GNB2, X, y, cv=8)
+    cv_scores.append(cv.mean())
     
 plt.figure()
-plt.plot(varSmooths, cv_scores)
+plt.plot(varSmooths, cv_scores, label="GNB 8CV")
+plt.legend()
 
