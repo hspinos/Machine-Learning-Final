@@ -20,7 +20,7 @@ for i in c:
     svc.fit(X, y)
     cv = cross_val_score(svc, X, y, cv=8)
     ml_cv.append(cv.mean())
-plt.plot(c, ml_cv, label='sigmoid')
+plt.plot(c, ml_cv, label='rbf')
 plt.legend()
 plt.show()
 
