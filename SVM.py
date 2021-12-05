@@ -14,7 +14,7 @@ X = scaler.fit_transform(X)
 
 #SVM cross val score
 ml_cv = []
-c = np.linspace(3.5, 8, 100)
+c = np.linspace(3.5,8 , 100)
 for i in c:
     svc = SVC(kernel='rbf', C=i)
     svc.fit(X, y)
@@ -32,7 +32,7 @@ train_scores = []
 test_scores = []
 c = np.linspace(1, 50, 100)
 for i in c:
-    svm = SVC(kernel='rbf', C=i)
+    svm = SVC(kernel='linear', C=i)
     svm.fit(X_train, y_train)
     train_scores.append(svm.score(X_train, y_train))
     test_scores.append(svm.score(X_test, y_test))
