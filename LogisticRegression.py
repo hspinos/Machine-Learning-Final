@@ -38,5 +38,3 @@ plt.plot(state, train_scores, label='train')
 plt.legend()
 plt.show()
 
-
-
