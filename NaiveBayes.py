@@ -11,6 +11,20 @@ data = np.loadtxt('leaf2.csv', delimiter=',')
 X = data[: , 2:15]
 y = data[: , 0]
 
+
+#Model Using 8-Fold Cross Validation
+
+varSmooths = np.linspace(0, .001, 101)
+cv_scores = []
+for v in varSmooths:
+    GNB2 = GaussianNB(var_smoothing=v)
+    cv = cross_val_score(GNB2, X, y, cv=8)
+    cv_scores.append(cv.mean())
+    
+plt.plot(varSmooths, cv_scores, label="Scores")
+plt.title("GNB 8-Fold CV")
+plt.legend()
+
 #Model Using Train Test Split
 
 varSmooths = np.linspace(0, .001, 101)
@@ -25,23 +39,11 @@ for v in varSmooths:
     train_scores.append(GNB.score(X_train, y_train))
     test_scores.append(GNB.score(X_test, y_test))
     
+plt.figure()
 plt.plot(varSmooths, train_scores, label="Train")
 plt.plot(varSmooths, test_scores, label="Test")
 plt.title("GNB Train Test Split")
 plt.legend()
     
 
-#Model Using 8-Fold Cross Validation
-
-varSmooths = np.linspace(0, .001, 101)
-cv_scores = []
-for v in varSmooths:
-    GNB2 = GaussianNB(var_smoothing=v)
-    cv = cross_val_score(GNB2, X, y, cv=8)
-    cv_scores.append(cv.mean())
-    
-plt.figure()
-plt.plot(varSmooths, cv_scores, label="Scores")
-plt.title("GNB 8-Fold CV")
-plt.legend()
 
